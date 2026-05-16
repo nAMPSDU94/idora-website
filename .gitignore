@@ -1,0 +1,22 @@
+# Dependencies
+backend/node_modules/
+
+# Database
+backend/prisma/dev.db
+backend/prisma/dev.db-journal
+
+# Environment
+backend/.env
+.env
+
+# Uploads (client photos — ne pas mettre sur GitHub)
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+npm-debug.log*

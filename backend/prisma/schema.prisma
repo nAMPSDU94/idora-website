@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Order {
+  id        String   @id @default(cuid())
+  type      String   // "couple" | "birthday"
+  yourName  String
+  magNames  String
+  email     String
+  story     String
+  photos    String   @default("[]") // JSON array of file paths
+  status    String   @default("pending") // pending | in_progress | review | done | delivered
+  notes     String   @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

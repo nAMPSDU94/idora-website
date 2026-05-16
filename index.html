@@ -1,0 +1,1511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>IDORA — Personalized Magazines | Turn Memories Into Art</title>
+  <meta name="description" content="IDORA creates personalized magazines for couples and birthdays. Turn your memories into something meaningful and unforgettable. A unique and thoughtful gift for your loved ones." />
+  <meta property="og:title" content="IDORA — Personalized Magazines" />
+  <meta property="og:description" content="Turn your memories into something meaningful and unforgettable. Personalized couple & birthday magazines." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://idora-mag.com/og-image.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@200;300;400;500&family=Great+Vibes&display=swap" rel="stylesheet" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "LocalBusiness",
+    "name": "IDORA Personalized Magazines",
+    "description": "Personalized magazines for couples and birthdays. Turn your memories into meaningful, unforgettable gifts.",
+    "url": "https://idora-mag.com",
+    "sameAs": ["https://www.instagram.com/idora-mag"],
+    "offers": [
+      { "@type": "Offer", "name": "Couple Magazine — Love Edition", "description": "A personalized magazine celebrating your love story" },
+      { "@type": "Offer", "name": "Birthday Magazine", "description": "A personalized birthday magazine celebrating a special person" }
+    ]
+  }
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --cream: #FAF7F2;
+      --cream-dark: #F2EDE4;
+      --gold: #B8962E;
+      --gold-light: #D4AF5A;
+      --gold-pale: #E8D5A0;
+      --gold-shimmer: #F5E6B0;
+      --charcoal: #1E1A16;
+      --charcoal-light: #4A4238;
+      --white: #FFFFFF;
+      --ff-display: 'Cormorant Garamond', Georgia, serif;
+      --ff-script: 'Great Vibes', cursive;
+      --ff-body: 'Jost', sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--ff-body);
+      background: var(--cream);
+      color: var(--charcoal);
+      overflow-x: hidden;
+      cursor: none;
+    }
+
+    /* Custom cursor */
+    .cursor {
+      width: 10px; height: 10px;
+      background: var(--gold);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9999;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease, width 0.3s ease, height 0.3s ease, background 0.3s ease;
+      mix-blend-mode: multiply;
+    }
+    .cursor-ring {
+      width: 36px; height: 36px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      position: fixed; top: 0; left: 0;
+      pointer-events: none; z-index: 9998;
+      transform: translate(-50%, -50%);
+      transition: transform 0.18s ease, width 0.3s ease, height 0.3s ease, opacity 0.3s ease;
+      opacity: 0.6;
+    }
+    .cursor.hover { width: 20px; height: 20px; background: var(--gold-light); }
+    .cursor-ring.hover { width: 56px; height: 56px; opacity: 0.3; }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 1.4rem 4rem;
+      transition: background 0.5s ease, backdrop-filter 0.5s ease, padding 0.4s ease;
+    }
+    nav.scrolled {
+      background: rgba(250, 247, 242, 0.92);
+      backdrop-filter: blur(12px);
+      padding: 1rem 4rem;
+      border-bottom: 1px solid rgba(184, 150, 46, 0.15);
+    }
+    .nav-logo {
+      font-family: var(--ff-display);
+      font-size: 1.5rem;
+      font-weight: 500;
+      letter-spacing: 0.35em;
+      color: var(--gold);
+      text-transform: uppercase;
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+    .nav-links a {
+      font-family: var(--ff-body);
+      font-size: 0.72rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--charcoal-light);
+      text-decoration: none;
+      transition: color 0.3s;
+      position: relative;
+    }
+    .nav-links a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 1px; background: var(--gold);
+      transform: scaleX(0); transition: transform 0.3s ease;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a:hover::after { transform: scaleX(1); }
+    .nav-cta {
+      font-family: var(--ff-body);
+      font-size: 0.7rem; font-weight: 400;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--charcoal); background: transparent;
+      border: 1px solid var(--gold);
+      padding: 0.6rem 1.6rem;
+      text-decoration: none;
+      transition: all 0.35s ease;
+      position: relative; overflow: hidden;
+    }
+    .nav-cta::before {
+      content: ''; position: absolute;
+      inset: 0; background: var(--gold);
+      transform: translateX(-101%);
+      transition: transform 0.35s ease;
+    }
+    .nav-cta span { position: relative; z-index: 1; }
+    .nav-cta:hover::before { transform: translateX(0); }
+    .nav-cta:hover { color: var(--white); }
+
+    /* ─── HERO ─── */
+    #hero {
+      min-height: 100vh;
+      display: flex; align-items: center; justify-content: center;
+      position: relative; overflow: hidden;
+      background: var(--cream);
+    }
+    .hero-bg-lines {
+      position: absolute; inset: 0;
+      background-image:
+        linear-gradient(rgba(184,150,46,0.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(184,150,46,0.04) 1px, transparent 1px);
+      background-size: 80px 80px;
+    }
+    .hero-noise {
+      position: absolute; inset: 0; opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+    }
+
+    .hero-content {
+      position: relative; z-index: 2;
+      text-align: center;
+      padding: 2rem;
+      max-width: 860px;
+    }
+
+    /* Logo image hero */
+    .botanical-svg {
+      width: 260px; margin: 0 auto 1.5rem;
+      opacity: 0;
+      animation: fadeUp 1.4s cubic-bezier(0.16,1,0.3,1) 0.2s forwards;
+      object-fit: contain;
+    }
+    .botanical-left, .botanical-right {
+      position: absolute; top: 50%; transform: translateY(-50%);
+      width: 220px; opacity: 0.25;
+      pointer-events: none;
+    }
+    .botanical-left { left: 2rem; }
+    .botanical-right { right: 2rem; transform: translateY(-50%) scaleX(-1); }
+
+    /* Hero side real photo */
+    .hero-side-photo {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: 32%; overflow: hidden;
+      opacity: 0; animation: fadeIn 1.8s ease 1.5s forwards;
+    }
+    .hero-side-photo::before {
+      content: ''; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to right, var(--cream) 0%, transparent 30%),
+                  linear-gradient(to top, var(--cream) 0%, transparent 20%);
+    }
+    .hero-side-photo img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center top;
+    }
+    @keyframes fadeIn { from{opacity:0} to{opacity:1} }
+
+    .hero-eyebrow {
+      font-family: var(--ff-body);
+      font-size: 0.65rem; font-weight: 300;
+      letter-spacing: 0.5em; text-transform: uppercase;
+      color: var(--gold);
+      opacity: 0;
+      animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 0.6s forwards;
+      margin-bottom: 1rem;
+    }
+    .hero-title {
+      font-family: var(--ff-display);
+      font-size: clamp(5rem, 13vw, 11rem);
+      font-weight: 300;
+      line-height: 0.88;
+      letter-spacing: -0.01em;
+      color: var(--charcoal);
+      opacity: 0;
+      animation: fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) 0.8s forwards;
+      margin-bottom: 0.3rem;
+    }
+    .hero-title-gold { color: var(--gold); font-style: italic; }
+    .hero-sub {
+      font-family: var(--ff-script);
+      font-size: clamp(1.6rem, 4vw, 2.8rem);
+      color: var(--gold-light);
+      opacity: 0;
+      animation: fadeUp 1.2s cubic-bezier(0.16,1,0.3,1) 1s forwards;
+      margin-bottom: 2.4rem;
+    }
+    .hero-tagline {
+      font-family: var(--ff-body);
+      font-size: 0.85rem; font-weight: 300;
+      letter-spacing: 0.1em;
+      color: var(--charcoal-light);
+      max-width: 480px; margin: 0 auto 3rem;
+      line-height: 1.9;
+      opacity: 0;
+      animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1.1s forwards;
+    }
+    .hero-cta-wrap {
+      display: flex; gap: 1.2rem; justify-content: center; align-items: center;
+      opacity: 0;
+      animation: fadeUp 1s cubic-bezier(0.16,1,0.3,1) 1.3s forwards;
+    }
+    .btn-primary {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      border: none; padding: 1.1rem 3rem;
+      text-decoration: none;
+      position: relative; overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: none;
+    }
+    .btn-primary::before {
+      content: '';
+      position: absolute; top: 0; left: -100%;
+      width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+      transition: left 0.5s ease;
+    }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 40px rgba(184,150,46,0.35); }
+
+    .btn-secondary {
+      display: inline-block;
+      font-family: var(--ff-body);
+      font-size: 0.72rem; font-weight: 300;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--charcoal-light);
+      background: transparent;
+      border: none; padding: 1.1rem 0;
+      text-decoration: none;
+      position: relative;
+      cursor: none;
+    }
+    .btn-secondary::after {
+      content: '';
+      position: absolute; bottom: 0.8rem; left: 0; right: 0;
+      height: 1px; background: var(--charcoal-light);
+      transform: scaleX(0.3); transition: transform 0.4s ease;
+      transform-origin: left;
+    }
+    .btn-secondary:hover::after { transform: scaleX(1); }
+
+    .hero-scroll {
+      position: absolute; bottom: 2.5rem; left: 50%;
+      transform: translateX(-50%);
+      display: flex; flex-direction: column; align-items: center; gap: 0.5rem;
+      opacity: 0;
+      animation: fadeUp 1s ease 2s forwards;
+      cursor: none;
+    }
+    .hero-scroll span {
+      font-size: 0.6rem; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--gold); font-weight: 300;
+    }
+    .scroll-line {
+      width: 1px; height: 50px;
+      background: linear-gradient(to bottom, var(--gold), transparent);
+      animation: scrollPulse 2s ease infinite;
+    }
+
+    /* ─── SECTION BASE ─── */
+    section { padding: 8rem 4rem; }
+
+    .section-label {
+      font-family: var(--ff-body);
+      font-size: 0.62rem; font-weight: 300;
+      letter-spacing: 0.5em; text-transform: uppercase;
+      color: var(--gold); margin-bottom: 1.5rem;
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .section-label::before {
+      content: ''; width: 40px; height: 1px; background: var(--gold);
+    }
+    .section-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--charcoal);
+    }
+    .section-title em { font-style: italic; color: var(--gold); }
+
+    .reveal {
+      opacity: 0; transform: translateY(40px);
+      transition: opacity 0.9s cubic-bezier(0.16,1,0.3,1), transform 0.9s cubic-bezier(0.16,1,0.3,1);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.4s; }
+    .reveal-delay-5 { transition-delay: 0.5s; }
+
+    /* ─── ABOUT ─── */
+    #about {
+      background: var(--charcoal);
+      position: relative; overflow: hidden;
+    }
+    #about::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; bottom: 0;
+      background: radial-gradient(ellipse at 30% 50%, rgba(184,150,46,0.08) 0%, transparent 60%);
+    }
+    .about-inner {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 4rem;
+      align-items: center; position: relative;
+    }
+    .about-image {
+      position: relative; overflow: hidden;
+      aspect-ratio: 3/4;
+    }
+    .about-image img {
+      width: 100%; height: 100%; object-fit: cover; object-position: center;
+      transition: transform 0.8s ease;
+    }
+    .about-image:hover img { transform: scale(1.04); }
+    .about-image::after {
+      content: ''; position: absolute; inset: 0;
+      border: 1px solid rgba(184,150,46,0.3);
+      pointer-events: none;
+    }
+    .about-left .section-label { color: var(--gold-pale); }
+    .about-left .section-label::before { background: var(--gold-pale); }
+    .about-title {
+      font-family: var(--ff-display);
+      font-size: clamp(2.5rem, 4.5vw, 4rem);
+      font-weight: 300; line-height: 1.1;
+      color: var(--white);
+    }
+    .about-title em { color: var(--gold-light); font-style: italic; }
+    .about-right p {
+      font-size: 0.95rem; font-weight: 300;
+      line-height: 2.1; color: rgba(255,255,255,0.65);
+      margin-bottom: 1.5rem;
+    }
+    .about-right p strong { color: var(--gold-light); font-weight: 400; }
+    .about-divider {
+      width: 60px; height: 1px;
+      background: var(--gold); margin: 2.5rem 0;
+    }
+    .about-stats {
+      display: flex; gap: 3rem;
+    }
+    .stat-num {
+      font-family: var(--ff-display);
+      font-size: 3rem; font-weight: 300;
+      color: var(--gold-light); line-height: 1;
+    }
+    .stat-label {
+      font-size: 0.65rem; letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.4); margin-top: 0.3rem;
+      font-weight: 300;
+    }
+
+    /* ─── PRODUCTS ─── */
+    #products { background: var(--cream); }
+    .products-inner { max-width: 1200px; margin: 0 auto; }
+    .products-header { text-align: center; margin-bottom: 5rem; }
+    .products-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 3rem;
+    }
+
+    .product-card {
+      background: var(--white);
+      border: 1px solid rgba(184,150,46,0.15);
+      padding: 3rem 2.5rem;
+      position: relative; overflow: hidden;
+      transition: transform 0.4s cubic-bezier(0.16,1,0.3,1),
+                  box-shadow 0.4s cubic-bezier(0.16,1,0.3,1),
+                  border-color 0.4s ease;
+      cursor: none;
+    }
+    .product-card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(184,150,46,0.04) 0%, transparent 60%);
+      opacity: 0; transition: opacity 0.4s ease;
+    }
+    .product-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 30px 80px rgba(184,150,46,0.18);
+      border-color: rgba(184,150,46,0.4);
+    }
+    .product-card:hover::before { opacity: 1; }
+
+    /* Magazine mockup CSS */
+    .mag-mockup {
+      width: 140px; height: 200px;
+      margin: 0 auto 2.5rem;
+      position: relative;
+      box-shadow: 8px 8px 30px rgba(0,0,0,0.15), -2px -2px 10px rgba(0,0,0,0.08);
+    }
+    .mag-cover {
+      width: 100%; height: 100%;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+      padding: 1rem 0.9rem;
+      position: relative; overflow: hidden;
+    }
+    .mag-couple .mag-cover {
+      background: linear-gradient(160deg, #2C1810 0%, #1A0F0A 50%, #2E1912 100%);
+    }
+    .mag-birthday .mag-cover {
+      background: linear-gradient(160deg, #0A1628 0%, #132040 50%, #1A2D50 100%);
+    }
+    .mag-cover::before {
+      content: ''; position: absolute;
+      top: -30%; right: -20%;
+      width: 120%; height: 120%;
+      background: radial-gradient(ellipse, rgba(184,150,46,0.2) 0%, transparent 60%);
+    }
+    .mag-edition {
+      font-size: 0.42rem; letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: rgba(255,255,255,0.6); position: relative; z-index: 1;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      padding-bottom: 0.4rem;
+    }
+    .mag-type {
+      font-family: var(--ff-display);
+      font-size: 1.3rem; font-weight: 300;
+      color: var(--white); line-height: 1;
+      position: relative; z-index: 1;
+    }
+    .mag-names {
+      font-family: var(--ff-display);
+      font-size: 0.75rem; font-weight: 500;
+      color: var(--gold-light);
+      text-transform: uppercase; letter-spacing: 0.05em;
+      position: relative; z-index: 1;
+    }
+    .mag-bottom {
+      position: relative; z-index: 1;
+    }
+    .mag-tagline {
+      font-size: 0.38rem; color: rgba(255,255,255,0.5);
+      letter-spacing: 0.1em; text-transform: uppercase;
+      line-height: 1.6;
+    }
+    .mag-bar {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, var(--gold), transparent);
+      margin-bottom: 0.3rem;
+    }
+
+    /* product text */
+    .product-type {
+      font-size: 0.62rem; letter-spacing: 0.35em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 300; margin-bottom: 0.6rem;
+    }
+    .product-name {
+      font-family: var(--ff-display);
+      font-size: 2rem; font-weight: 300;
+      line-height: 1.1; color: var(--charcoal);
+      margin-bottom: 1.2rem;
+    }
+    .product-name em { font-style: italic; color: var(--gold); }
+    .product-desc {
+      font-size: 0.85rem; font-weight: 300;
+      line-height: 1.9; color: var(--charcoal-light);
+      margin-bottom: 2rem;
+    }
+    .product-features {
+      list-style: none; margin-bottom: 2rem;
+    }
+    .product-features li {
+      font-size: 0.78rem; font-weight: 300;
+      color: var(--charcoal-light);
+      padding: 0.4rem 0;
+      border-bottom: 1px solid rgba(184,150,46,0.1);
+      display: flex; align-items: center; gap: 0.8rem;
+    }
+    .product-features li::before {
+      content: '◆'; color: var(--gold); font-size: 0.4rem;
+    }
+
+    /* ─── HOW IT WORKS ─── */
+    #how { background: var(--cream-dark); }
+    .how-inner { max-width: 1200px; margin: 0 auto; }
+    .how-header { text-align: center; margin-bottom: 5rem; }
+    .steps-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 0; position: relative;
+    }
+    .steps-grid::before {
+      content: '';
+      position: absolute; top: 3rem; left: 16%; right: 16%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .step {
+      text-align: center; padding: 0 2rem;
+      position: relative;
+    }
+    .step-num {
+      width: 60px; height: 60px;
+      border: 1px solid var(--gold);
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 2rem;
+      font-family: var(--ff-display);
+      font-size: 1.4rem; font-weight: 300;
+      color: var(--gold);
+      background: var(--cream-dark);
+      position: relative; z-index: 1;
+      transition: background 0.4s, color 0.4s;
+    }
+    .step:hover .step-num {
+      background: var(--gold); color: var(--white);
+    }
+    .step-title {
+      font-family: var(--ff-display);
+      font-size: 1.5rem; font-weight: 400;
+      color: var(--charcoal); margin-bottom: 1rem;
+    }
+    .step-desc {
+      font-size: 0.83rem; font-weight: 300;
+      line-height: 1.9; color: var(--charcoal-light);
+    }
+
+    /* ─── GALLERY ─── */
+    #gallery { background: var(--cream); overflow: hidden; }
+    .gallery-inner { max-width: 1200px; margin: 0 auto; }
+    .gallery-header { text-align: center; margin-bottom: 4rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    /* Real photo covers */
+    .gallery-photo {
+      aspect-ratio: 2/3;
+      position: relative; overflow: hidden;
+      cursor: none;
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .gallery-photo img {
+      width: 100%; height: 100%;
+      object-fit: cover; object-position: center top;
+      transition: transform 0.6s ease;
+    }
+    .gallery-photo:hover { transform: scale(1.03); }
+    .gallery-photo:hover img { transform: scale(1.06); }
+    .gallery-photo:hover .gc-overlay { opacity: 1; }
+
+    /* CSS Magazine Covers — Gallery */
+    .gallery-cover {
+      aspect-ratio: 2/3;
+      position: relative; overflow: hidden;
+      cursor: none;
+      transition: transform 0.5s cubic-bezier(0.16,1,0.3,1);
+    }
+    .gallery-cover:hover { transform: scale(1.03); }
+    .gallery-cover:hover .gc-overlay { opacity: 1; }
+    .gc-bg {
+      position: absolute; inset: 0;
+    }
+    .gc1 .gc-bg { background: linear-gradient(160deg, #1E0A08 0%, #3D1410 40%, #2A0E0B 100%); }
+    .gc2 .gc-bg { background: linear-gradient(160deg, #08141E 0%, #0F2C3D 40%, #0B1E2A 100%); }
+    .gc3 .gc-bg { background: linear-gradient(160deg, #1A0E1F 0%, #2D1840 40%, #1F1028 100%); }
+    .gc4 .gc-bg { background: linear-gradient(160deg, #0A180A 0%, #1A3018 40%, #0E221A 100%); }
+
+    .gc-glow {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+      pointer-events: none;
+    }
+    .gc1 .gc-glow { width: 120px; height: 120px; top: 20%; right: 10%; background: rgba(184,150,46,0.25); }
+    .gc2 .gc-glow { width: 100px; height: 100px; top: 30%; left: 5%; background: rgba(100,150,220,0.2); }
+    .gc3 .gc-glow { width: 130px; height: 130px; bottom: 20%; right: -10%; background: rgba(180,100,200,0.2); }
+    .gc4 .gc-glow { width: 110px; height: 110px; top: 25%; left: 10%; background: rgba(80,180,100,0.18); }
+
+    .gc-content {
+      position: absolute; inset: 0;
+      padding: 1.2rem;
+      display: flex; flex-direction: column;
+      justify-content: space-between;
+    }
+    .gc-header-bar {
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .gc-issue {
+      font-size: 0.5rem; letter-spacing: 0.25em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
+    }
+    .gc-edition {
+      font-size: 0.45rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: var(--gold-pale);
+      text-align: right;
+    }
+    .gc-main { flex: 1; display: flex; flex-direction: column; justify-content: center; }
+    .gc-category {
+      font-size: 0.5rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold-light);
+      margin-bottom: 0.4rem;
+    }
+    .gc-name {
+      font-family: var(--ff-display);
+      font-size: 1.5rem; font-weight: 300;
+      color: var(--white); line-height: 1.05;
+    }
+    .gc-name em { color: var(--gold-light); font-style: italic; }
+    .gc-subtitle {
+      font-size: 0.48rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.45);
+      margin-top: 0.5rem;
+    }
+    .gc-footer { }
+    .gc-hr {
+      width: 100%; height: 1px;
+      background: linear-gradient(90deg, var(--gold), rgba(184,150,46,0.1));
+      margin-bottom: 0.5rem;
+    }
+    .gc-footer-text {
+      font-size: 0.42rem; letter-spacing: 0.15em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+    }
+    .gc-overlay {
+      position: absolute; inset: 0;
+      background: rgba(184,150,46,0.12);
+      border: 2px solid rgba(184,150,46,0.4);
+      opacity: 0; transition: opacity 0.4s ease;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .gc-overlay span {
+      font-size: 0.6rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold-light);
+      font-family: var(--ff-body); font-weight: 300;
+    }
+
+    /* ─── TESTIMONIALS ─── */
+    #testimonials { background: var(--charcoal); }
+    .testi-inner { max-width: 1100px; margin: 0 auto; }
+    .testi-header { text-align: center; margin-bottom: 4rem; }
+    .testi-header .section-label { justify-content: center; }
+    .testi-header .section-label::before { display: none; }
+    .testi-title { color: var(--white); }
+    .testi-title em { color: var(--gold-light); }
+    .testi-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .testi-card {
+      border: 1px solid rgba(184,150,46,0.2);
+      padding: 2.5rem;
+      position: relative;
+      transition: border-color 0.4s, transform 0.4s;
+    }
+    .testi-card:hover {
+      border-color: rgba(184,150,46,0.5);
+      transform: translateY(-4px);
+    }
+    .testi-quote {
+      font-family: var(--ff-display);
+      font-size: 4rem; font-weight: 300;
+      color: var(--gold); line-height: 0.5;
+      margin-bottom: 1rem; opacity: 0.5;
+    }
+    .testi-text {
+      font-family: var(--ff-display);
+      font-size: 1rem; font-style: italic;
+      font-weight: 300; line-height: 1.8;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 2rem;
+    }
+    .testi-author {
+      display: flex; align-items: center; gap: 1rem;
+    }
+    .testi-avatar {
+      width: 42px; height: 42px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold), var(--gold-light));
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--ff-display);
+      font-size: 1rem; font-weight: 400; color: var(--white);
+      flex-shrink: 0;
+    }
+    .testi-name {
+      font-size: 0.75rem; font-weight: 400;
+      letter-spacing: 0.1em; color: var(--white);
+    }
+    .testi-detail {
+      font-size: 0.65rem; font-weight: 300;
+      color: var(--gold-light); letter-spacing: 0.05em;
+    }
+    .testi-stars {
+      position: absolute; top: 2rem; right: 2rem;
+      color: var(--gold); font-size: 0.65rem; letter-spacing: 0.1em;
+    }
+
+    /* ─── ORDER FORM ─── */
+    #order {
+      background: var(--cream);
+      position: relative; overflow: hidden;
+    }
+    #order::before {
+      content: '';
+      position: absolute; top: -200px; left: -100px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(184,150,46,0.07) 0%, transparent 70%);
+    }
+    .order-inner {
+      max-width: 800px; margin: 0 auto;
+      text-align: center; position: relative;
+    }
+    .order-header { margin-bottom: 4rem; }
+    .order-form {
+      background: var(--white);
+      border: 1px solid rgba(184,150,46,0.2);
+      padding: 3.5rem;
+      text-align: left;
+    }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .form-group { margin-bottom: 1.8rem; }
+    .form-group label {
+      display: block;
+      font-size: 0.62rem; font-weight: 400;
+      letter-spacing: 0.25em; text-transform: uppercase;
+      color: var(--charcoal-light); margin-bottom: 0.6rem;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      font-family: var(--ff-body);
+      font-size: 0.88rem; font-weight: 300;
+      color: var(--charcoal);
+      background: transparent;
+      border: none; border-bottom: 1px solid rgba(184,150,46,0.25);
+      padding: 0.7rem 0;
+      outline: none;
+      transition: border-color 0.3s;
+      appearance: none;
+    }
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-bottom-color: var(--gold);
+    }
+    .form-group textarea { resize: none; height: 90px; line-height: 1.7; }
+    .form-group select { cursor: none; background: transparent; }
+
+    .file-upload {
+      border: 1px dashed rgba(184,150,46,0.35);
+      padding: 2rem; text-align: center;
+      transition: border-color 0.3s, background 0.3s;
+      position: relative; overflow: hidden;
+    }
+    .file-upload:hover { border-color: var(--gold); background: rgba(184,150,46,0.03); }
+    .file-upload input { position: absolute; inset: 0; opacity: 0; cursor: none; width: 100%; }
+    .file-upload-text {
+      font-size: 0.78rem; font-weight: 300;
+      color: var(--charcoal-light); line-height: 1.8;
+    }
+    .file-upload-icon {
+      font-size: 1.5rem; color: var(--gold); margin-bottom: 0.5rem;
+    }
+    .form-submit {
+      text-align: center; margin-top: 2.5rem;
+    }
+    .btn-submit {
+      font-family: var(--ff-body);
+      font-size: 0.72rem; font-weight: 400;
+      letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--white);
+      background: var(--gold);
+      border: none; padding: 1.2rem 4rem;
+      cursor: none; position: relative; overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+      width: 100%;
+    }
+    .btn-submit::before {
+      content: '';
+      position: absolute; top: 0; left: -100%; width: 100%; height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(255,255,255,0.25), transparent);
+      transition: left 0.5s;
+    }
+    .btn-submit:hover::before { left: 100%; }
+    .btn-submit:hover { transform: translateY(-2px); box-shadow: 0 15px 40px rgba(184,150,46,0.3); }
+    .form-note {
+      font-size: 0.7rem; color: var(--charcoal-light);
+      font-weight: 300; margin-top: 1.2rem; text-align: center;
+      line-height: 1.8;
+    }
+
+    /* ─── FOOTER ─── */
+    footer {
+      background: var(--charcoal);
+      padding: 5rem 4rem 3rem;
+      position: relative; overflow: hidden;
+    }
+    footer::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .footer-inner {
+      max-width: 1200px; margin: 0 auto;
+    }
+    .footer-top {
+      display: grid; grid-template-columns: 2fr 1fr 1fr;
+      gap: 4rem; margin-bottom: 4rem;
+    }
+    .footer-brand-name {
+      font-family: var(--ff-display);
+      font-size: 3rem; font-weight: 300;
+      letter-spacing: 0.2em; color: var(--gold);
+      line-height: 1;
+    }
+    .footer-brand-sub {
+      font-size: 0.62rem; letter-spacing: 0.4em;
+      text-transform: uppercase; color: rgba(255,255,255,0.35);
+      margin-top: 0.3rem; font-weight: 300;
+    }
+    .footer-tagline {
+      font-family: var(--ff-display);
+      font-size: 1rem; font-style: italic;
+      color: rgba(255,255,255,0.4);
+      margin-top: 1.5rem; line-height: 1.7;
+    }
+    .footer-col-title {
+      font-size: 0.6rem; letter-spacing: 0.3em;
+      text-transform: uppercase; color: var(--gold);
+      font-weight: 400; margin-bottom: 1.5rem;
+    }
+    .footer-links { list-style: none; }
+    .footer-links li { margin-bottom: 0.8rem; }
+    .footer-links a {
+      font-size: 0.8rem; font-weight: 300;
+      color: rgba(255,255,255,0.45);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .footer-links a:hover { color: var(--gold-light); }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,0.06);
+      padding-top: 2rem;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-size: 0.68rem; font-weight: 300;
+      color: rgba(255,255,255,0.25); letter-spacing: 0.05em;
+    }
+    .footer-social {
+      display: flex; gap: 1.2rem;
+    }
+    .social-link {
+      width: 36px; height: 36px;
+      border: 1px solid rgba(184,150,46,0.3);
+      display: flex; align-items: center; justify-content: center;
+      text-decoration: none; color: var(--gold);
+      font-size: 0.75rem;
+      transition: all 0.3s;
+    }
+    .social-link:hover {
+      background: var(--gold); color: var(--white);
+      border-color: var(--gold);
+    }
+
+    /* ─── ANIMATIONS ─── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(30px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes scrollPulse {
+      0%, 100% { opacity: 1; transform: scaleY(1); }
+      50% { opacity: 0.3; transform: scaleY(0.5); }
+    }
+    @keyframes shimmer {
+      0% { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+
+    /* ─── TOAST ─── */
+    .toast {
+      position: fixed; bottom: 2rem; right: 2rem; z-index: 200;
+      background: var(--charcoal);
+      border: 1px solid var(--gold);
+      padding: 1.2rem 2rem;
+      font-size: 0.78rem; font-weight: 300;
+      color: var(--white); letter-spacing: 0.05em;
+      transform: translateY(100px); opacity: 0;
+      transition: all 0.5s cubic-bezier(0.16,1,0.3,1);
+      pointer-events: none;
+    }
+    .toast.show { transform: translateY(0); opacity: 1; }
+    .toast strong { color: var(--gold-light); }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 900px) {
+      nav { padding: 1.2rem 2rem; }
+      nav.scrolled { padding: 0.8rem 2rem; }
+      .nav-links { display: none; }
+      section { padding: 5rem 2rem; }
+      .about-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .about-image { max-height: 300px; aspect-ratio: 16/9; }
+      .hero-side-photo { display: none; }
+      .products-grid { grid-template-columns: 1fr; }
+      .steps-grid { grid-template-columns: 1fr; }
+      .steps-grid::before { display: none; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); }
+      .testi-grid { grid-template-columns: 1fr; }
+      .form-row { grid-template-columns: 1fr; }
+      .footer-top { grid-template-columns: 1fr; gap: 2.5rem; }
+      .footer-bottom { flex-direction: column; gap: 1.5rem; text-align: center; }
+      .botanical-left, .botanical-right { display: none; }
+      .order-form { padding: 2rem 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Custom cursor -->
+<div class="cursor" id="cursor"></div>
+<div class="cursor-ring" id="cursorRing"></div>
+
+<!-- Toast notification -->
+<div class="toast" id="toast">
+  <strong>Thank you!</strong> We'll be in touch within 24 hours ✦
+</div>
+
+<!-- ─── NAV ─── -->
+<nav id="nav">
+  <a href="#hero" class="nav-logo">IDORA</a>
+  <ul class="nav-links">
+    <li><a href="#about">Story</a></li>
+    <li><a href="#products">Magazines</a></li>
+    <li><a href="#how">Process</a></li>
+    <li><a href="#gallery">Gallery</a></li>
+  </ul>
+  <a href="#order" class="nav-cta"><span>Order Now</span></a>
+</nav>
+
+<!-- ─── HERO ─── -->
+<section id="hero">
+  <div class="hero-bg-lines"></div>
+  <div class="hero-noise"></div>
+
+  <!-- Side botanicals -->
+  <svg class="botanical-left" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 380 Q80 300 60 220 Q40 140 80 80 Q100 50 120 80" stroke="#B8962E" stroke-width="1" fill="none"/>
+    <path d="M80 280 Q50 260 30 240 Q20 230 25 215" stroke="#B8962E" stroke-width="0.8" fill="none"/>
+    <path d="M70 250 Q40 220 35 200 Q30 185 40 175" stroke="#B8962E" stroke-width="0.7" fill="none"/>
+    <circle cx="25" cy="215" r="3" fill="#B8962E" opacity="0.5"/>
+    <circle cx="35" cy="200" r="2.5" fill="#B8962E" opacity="0.4"/>
+    <path d="M90 200 Q55 185 45 165 Q40 150 50 140" stroke="#B8962E" stroke-width="0.6" fill="none"/>
+    <circle cx="50" cy="140" r="2" fill="#B8962E" opacity="0.3"/>
+    <path d="M95 160 Q70 150 65 130 Q62 118 72 112" stroke="#B8962E" stroke-width="0.6" fill="none"/>
+    <ellipse cx="30" cy="225" rx="5" ry="3" fill="#B8962E" opacity="0.25" transform="rotate(-30 30 225)"/>
+    <ellipse cx="40" cy="178" rx="4" ry="2.5" fill="#B8962E" opacity="0.2" transform="rotate(-45 40 178)"/>
+  </svg>
+  <svg class="botanical-right" viewBox="0 0 200 400" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M100 380 Q80 300 60 220 Q40 140 80 80 Q100 50 120 80" stroke="#B8962E" stroke-width="1" fill="none"/>
+    <path d="M80 280 Q50 260 30 240 Q20 230 25 215" stroke="#B8962E" stroke-width="0.8" fill="none"/>
+    <path d="M70 250 Q40 220 35 200 Q30 185 40 175" stroke="#B8962E" stroke-width="0.7" fill="none"/>
+    <circle cx="25" cy="215" r="3" fill="#B8962E" opacity="0.5"/>
+    <circle cx="35" cy="200" r="2.5" fill="#B8962E" opacity="0.4"/>
+    <path d="M90 200 Q55 185 45 165 Q40 150 50 140" stroke="#B8962E" stroke-width="0.6" fill="none"/>
+    <circle cx="50" cy="140" r="2" fill="#B8962E" opacity="0.3"/>
+    <path d="M95 160 Q70 150 65 130 Q62 118 72 112" stroke="#B8962E" stroke-width="0.6" fill="none"/>
+    <ellipse cx="30" cy="225" rx="5" ry="3" fill="#B8962E" opacity="0.25" transform="rotate(-30 30 225)"/>
+    <ellipse cx="40" cy="178" rx="4" ry="2.5" fill="#B8962E" opacity="0.2" transform="rotate(-45 40 178)"/>
+  </svg>
+
+  <div class="hero-content">
+    <!-- Real IDORA logo -->
+    <img src="images/logo.jpg" class="botanical-svg" alt="IDORA Personalized Magazines" />
+
+    <p class="hero-eyebrow">Est. 2024 · Personalized Magazines</p>
+    <h1 class="hero-title">I<span class="hero-title-gold">D</span>ORA</h1>
+    <p class="hero-sub">Personalized Magazines</p>
+    <p class="hero-tagline">Turning your memories into something meaningful and unforgettable. A unique and thoughtful gift for your loved ones.</p>
+    <div class="hero-cta-wrap">
+      <a href="#order" class="btn-primary">Order Your Magazine</a>
+      <a href="#gallery" class="btn-secondary">View Gallery</a>
+    </div>
+  </div>
+
+  <!-- Real magazine photo — right side -->
+  <div class="hero-side-photo">
+    <img src="images/magazines-2.jpg" alt="IDORA real magazines" />
+  </div>
+
+  <div class="hero-scroll">
+    <span>Scroll</span>
+    <div class="scroll-line"></div>
+  </div>
+</section>
+
+<!-- ─── ABOUT ─── -->
+<section id="about">
+  <div class="about-inner">
+    <div class="about-image reveal">
+      <img src="images/about.jpg" alt="IDORA personalized magazines — examples" />
+    </div>
+    <div class="about-left reveal reveal-delay-1">
+      <div class="section-label">Our Story</div>
+      <h2 class="about-title">Every story<br>deserves to be<br><em>beautifully told</em></h2>
+    </div>
+    <div class="about-right reveal reveal-delay-2">
+      <p>At <strong>IDORA</strong>, we believe that love stories, birthdays, and life's milestones deserve more than a photo album. They deserve a magazine — your very own cover story.</p>
+      <p>We take your photos, your memories, your words — and we craft them into a stunning, personalized magazine that feels like it belongs on a newstand. Because your story is <strong>that important</strong>.</p>
+      <div class="about-divider"></div>
+      <div class="about-stats">
+        <div>
+          <div class="stat-num">500+</div>
+          <div class="stat-label">Magazines Created</div>
+        </div>
+        <div>
+          <div class="stat-num">98%</div>
+          <div class="stat-label">Happy Clients</div>
+        </div>
+        <div>
+          <div class="stat-num">20</div>
+          <div class="stat-label">Pages of Pure Magic</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── PRODUCTS ─── -->
+<section id="products">
+  <div class="products-inner">
+    <div class="products-header reveal">
+      <div class="section-label" style="justify-content:center">
+        <span>Our Collections</span>
+      </div>
+      <h2 class="section-title">Choose your<br><em>edition</em></h2>
+    </div>
+    <div class="products-grid">
+
+      <!-- Couple Magazine -->
+      <div class="product-card reveal reveal-delay-1">
+        <div class="mag-mockup mag-couple">
+          <div class="mag-cover">
+            <div class="mag-edition">Love Edition · Special Issue</div>
+            <div class="mag-main" style="text-align:center; padding: 0.5rem 0;">
+              <div class="mag-type" style="font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:300; color:white; line-height:1;">COUPLE</div>
+              <div class="mag-names">Serkan &amp; Eda</div>
+              <div style="font-size:0.4rem;color:rgba(255,255,255,0.4);letter-spacing:0.15em;text-transform:uppercase;margin-top:0.4rem;">Inside Their Love Story</div>
+            </div>
+            <div class="mag-bottom">
+              <div class="mag-bar"></div>
+              <div class="mag-tagline">Because every love story deserves<br>to be seen — Fall In Love</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-type">Couple Magazine</div>
+        <h3 class="product-name">Love <em>Edition</em></h3>
+        <p class="product-desc">A personalized magazine celebrating your unique love story. Your photos, your memories, your words — all crafted into a stunning editorial-style magazine.</p>
+        <ul class="product-features">
+          <li>20 fully personalized pages</li>
+          <li>Professional editorial design</li>
+          <li>Your photos &amp; love story</li>
+          <li>Printed on premium paper</li>
+          <li>Delivered to your door</li>
+        </ul>
+        <a href="#order" class="btn-primary">Order Now</a>
+      </div>
+
+      <!-- Birthday Magazine -->
+      <div class="product-card reveal reveal-delay-2">
+        <div class="mag-mockup mag-birthday">
+          <div class="mag-cover">
+            <div class="mag-edition">Special Day Edition · Birthday</div>
+            <div class="mag-main" style="text-align:center; padding: 0.5rem 0;">
+              <div style="font-size:0.45rem;color:var(--gold-pale);letter-spacing:0.3em;text-transform:uppercase;margin-bottom:0.2rem;">Happy Birthday</div>
+              <div style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; font-weight:300; color:white; line-height:1.05;">Olivia<br>Lopez</div>
+              <div style="font-size:0.4rem;color:rgba(255,255,255,0.4);letter-spacing:0.12em;text-transform:uppercase;margin-top:0.4rem;">20 Years of Being an Icon</div>
+            </div>
+            <div class="mag-bottom">
+              <div class="mag-bar"></div>
+              <div class="mag-tagline">A year of memories, laughter &amp;<br>dreams — Special Day Edition</div>
+            </div>
+          </div>
+        </div>
+        <div class="product-type">Birthday Magazine</div>
+        <h3 class="product-name">Birthday <em>Edition</em></h3>
+        <p class="product-desc">Celebrate someone special with a magazine entirely dedicated to them. A breathtaking birthday gift that captures who they are and all that they mean to you.</p>
+        <ul class="product-features">
+          <li>20 fully personalized pages</li>
+          <li>Birthday theme design</li>
+          <li>Photos, tributes &amp; memories</li>
+          <li>Printed on premium paper</li>
+          <li>Delivered to your door</li>
+        </ul>
+        <a href="#order" class="btn-primary">Order Now</a>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── HOW IT WORKS ─── -->
+<section id="how">
+  <div class="how-inner">
+    <div class="how-header reveal">
+      <div class="section-label" style="justify-content:center"><span>The Process</span></div>
+      <h2 class="section-title">Three steps to<br><em>something unforgettable</em></h2>
+    </div>
+    <div class="steps-grid">
+      <div class="step reveal reveal-delay-1">
+        <div class="step-num">I</div>
+        <h3 class="step-title">Send Your Story</h3>
+        <p class="step-desc">Fill out our order form with your photos, names, and the story you want to tell. The more you share, the more personal your magazine becomes.</p>
+      </div>
+      <div class="step reveal reveal-delay-2">
+        <div class="step-num">II</div>
+        <h3 class="step-title">We Design It</h3>
+        <p class="step-desc">Our designers craft your personalized magazine with care — editorial layouts, beautiful typography, and your memories placed exactly where they belong.</p>
+      </div>
+      <div class="step reveal reveal-delay-3">
+        <div class="step-num">III</div>
+        <h3 class="step-title">Delivered to You</h3>
+        <p class="step-desc">Your finished magazine is printed on premium paper and delivered directly to your door — ready to gift, to keep, and to treasure forever.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ─── GALLERY ─── -->
+<section id="gallery">
+  <div class="gallery-inner">
+    <div class="gallery-header reveal">
+      <div class="section-label" style="justify-content:center"><span>Portfolio</span></div>
+      <h2 class="section-title">Stories we've<br><em>brought to life</em></h2>
+    </div>
+    <div class="gallery-grid">
+
+      <!-- Real photo 1 — printed magazines stacked -->
+      <div class="gallery-photo reveal reveal-delay-1">
+        <img src="images/magazines-1.jpg" alt="IDORA printed magazines — Serkan &amp; Eda" />
+        <div class="gc-overlay"><span>Real Prints</span></div>
+      </div>
+
+      <!-- CSS Cover — Olivia Lopez Birthday -->
+      <div class="gallery-cover gc2 reveal reveal-delay-2">
+        <div class="gc-bg"></div>
+        <div class="gc-glow"></div>
+        <div class="gc-content">
+          <div class="gc-header-bar">
+            <div class="gc-issue">Special Day · 2025</div>
+            <div class="gc-edition">Birthday</div>
+          </div>
+          <div class="gc-main">
+            <div class="gc-category">Birthday Magazine</div>
+            <div class="gc-name">Olivia<br><em>Lopez</em></div>
+            <div class="gc-subtitle">20 Years of Being an Icon</div>
+          </div>
+          <div class="gc-footer">
+            <div class="gc-hr"></div>
+            <div class="gc-footer-text">Birthday Edition · June 2025</div>
+          </div>
+        </div>
+        <div class="gc-overlay"><span>View</span></div>
+      </div>
+
+      <!-- CSS Cover — Natasha & Carl -->
+      <div class="gallery-cover gc3 reveal reveal-delay-3">
+        <div class="gc-bg"></div>
+        <div class="gc-glow"></div>
+        <div class="gc-content">
+          <div class="gc-header-bar">
+            <div class="gc-issue">Vol. 03 · 2025</div>
+            <div class="gc-edition">Love Edition</div>
+          </div>
+          <div class="gc-main">
+            <div class="gc-category">Couple</div>
+            <div class="gc-name">Natasha<br>&amp; <em>Carl</em></div>
+            <div class="gc-subtitle">Inside Their Love Story</div>
+          </div>
+          <div class="gc-footer">
+            <div class="gc-hr"></div>
+            <div class="gc-footer-text">Fall In Love · Couple Edition</div>
+          </div>
+        </div>
+        <div class="gc-overlay"><span>View</span></div>
+      </div>
+
+      <!-- Real photo 2 — magazines in sunlight -->
+      <div class="gallery-photo reveal reveal-delay-4">
+        <img src="images/magazines-2.jpg" alt="IDORA magazines — Huda &amp; Louwa, Jam's Birthday" />
+        <div class="gc-overlay"><span>Real Prints</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── TESTIMONIALS ─── -->
+<section id="testimonials">
+  <div class="testi-inner">
+    <div class="testi-header reveal">
+      <div class="section-label">What They Say</div>
+      <h2 class="section-title testi-title">Loved by couples<br>&amp; <em>families worldwide</em></h2>
+    </div>
+    <div class="testi-grid">
+
+      <div class="testi-card reveal reveal-delay-1">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">I gave this to my girlfriend for our anniversary and she cried. The quality is incredible — it genuinely looks like a real magazine. We'll treasure it forever.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">M</div>
+          <div>
+            <div class="testi-name">Marco T.</div>
+            <div class="testi-detail">Couple Magazine — Love Edition</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-2">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">We ordered a birthday magazine for our mum's 50th. She was completely speechless. Every single page was perfection. Best gift I've ever given — full stop.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">S</div>
+          <div>
+            <div class="testi-name">Sophie A.</div>
+            <div class="testi-detail">Birthday Magazine</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="testi-card reveal reveal-delay-3">
+        <div class="testi-stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p class="testi-text">The attention to detail is just stunning. From the cover to the last page, everything felt intentional and beautiful. The IDORA team really understood our story.</p>
+        <div class="testi-author">
+          <div class="testi-avatar">L</div>
+          <div>
+            <div class="testi-name">Léa &amp; Romain</div>
+            <div class="testi-detail">Couple Magazine — Love Edition</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ─── ORDER FORM ─── -->
+<section id="order">
+  <div class="order-inner">
+    <div class="order-header reveal">
+      <div class="section-label" style="justify-content:center"><span>Order</span></div>
+      <h2 class="section-title">Start your<br><em>story</em> today</h2>
+      <p style="font-size:0.85rem;font-weight:300;color:var(--charcoal-light);margin-top:1.5rem;line-height:1.9;">Fill in the form below and we'll reach out within 24 hours to begin crafting your personalized magazine.</p>
+    </div>
+    <div class="order-form reveal reveal-delay-1">
+      <form id="orderForm" onsubmit="handleSubmit(event)">
+        <div class="form-group">
+          <label>Magazine Type</label>
+          <select name="type" required>
+            <option value="" disabled selected>Select an edition...</option>
+            <option value="couple">Couple Magazine — Love Edition</option>
+            <option value="birthday">Birthday Magazine</option>
+          </select>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Your Name</label>
+            <input type="text" name="yourName" placeholder="Your full name" required />
+          </div>
+          <div class="form-group">
+            <label>Names on Magazine</label>
+            <input type="text" name="magNames" placeholder="e.g. Serkan &amp; Eda" required />
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="your@email.com" required />
+        </div>
+        <div class="form-group">
+          <label>Your Story</label>
+          <textarea name="story" placeholder="Tell us your story — how you met, your favourite memories, what makes this person so special..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label>Upload Your Photos</label>
+          <div class="file-upload" id="fileUpload">
+            <input type="file" name="photos" accept="image/*" multiple onchange="handleFileChange(this)" />
+            <div class="file-upload-icon">◈</div>
+            <div class="file-upload-text" id="fileText">
+              Drop your photos here or click to browse<br>
+              <span style="font-size:0.65rem;opacity:0.6">JPG, PNG · Up to 20 photos</span>
+            </div>
+          </div>
+        </div>
+        <div class="form-submit">
+          <button type="submit" class="btn-submit">Send My Order ✦</button>
+          <p class="form-note">We'll review your order and get in touch within 24 hours.<br>No payment required until you approve your design preview.</p>
+        </div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ─── FOOTER ─── -->
+<footer>
+  <div class="footer-inner">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">IDORA</div>
+        <div class="footer-brand-sub">Personalized Magazines</div>
+        <p class="footer-tagline">"Turning your memories into something<br>meaningful and unforgettable."</p>
+      </div>
+      <div>
+        <div class="footer-col-title">Navigate</div>
+        <ul class="footer-links">
+          <li><a href="#about">Our Story</a></li>
+          <li><a href="#products">Magazines</a></li>
+          <li><a href="#how">Process</a></li>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#order">Order Now</a></li>
+        </ul>
+      </div>
+      <div>
+        <div class="footer-col-title">Contact</div>
+        <ul class="footer-links">
+          <li><a href="mailto:hello@idora-mag.com">hello@idora-mag.com</a></li>
+          <li><a href="https://instagram.com/idora-mag" target="_blank">@idora-mag</a></li>
+          <li><a href="#order">Get a Quote</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2026 IDORA Personalized Magazines. All rights reserved.</div>
+      <div class="footer-social">
+        <a href="https://instagram.com/idora-mag" target="_blank" class="social-link" title="Instagram">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="4"/>
+            <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+        <a href="mailto:hello@idora-mag.com" class="social-link" title="Email">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+            <polyline points="22,6 12,13 2,6"/>
+          </svg>
+        </a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // ─── Custom cursor ───
+  const cursor = document.getElementById('cursor');
+  const ring = document.getElementById('cursorRing');
+  let mx = 0, my = 0, rx = 0, ry = 0;
+
+  document.addEventListener('mousemove', e => {
+    mx = e.clientX; my = e.clientY;
+    cursor.style.left = mx + 'px';
+    cursor.style.top = my + 'px';
+  });
+
+  function animRing() {
+    rx += (mx - rx) * 0.12;
+    ry += (my - ry) * 0.12;
+    ring.style.left = rx + 'px';
+    ring.style.top = ry + 'px';
+    requestAnimationFrame(animRing);
+  }
+  animRing();
+
+  document.querySelectorAll('a, button, .product-card, .gallery-cover, .testi-card, .file-upload, select, input, textarea').forEach(el => {
+    el.addEventListener('mouseenter', () => { cursor.classList.add('hover'); ring.classList.add('hover'); });
+    el.addEventListener('mouseleave', () => { cursor.classList.remove('hover'); ring.classList.remove('hover'); });
+  });
+
+  // ─── Nav scroll ───
+  const nav = document.getElementById('nav');
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  // ─── Reveal on scroll ───
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+  // ─── File upload ───
+  function handleFileChange(input) {
+    const count = input.files.length;
+    const el = document.getElementById('fileText');
+    if (count > 0) {
+      el.innerHTML = `<strong style="color:var(--gold)">${count} photo${count > 1 ? 's' : ''} selected</strong><br><span style="font-size:0.65rem;opacity:0.6">Click to change selection</span>`;
+    }
+  }
+
+  // ─── Form submit — connected to backend ───
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const form = e.target;
+    const submitBtn = form.querySelector('.btn-submit');
+    const toast = document.getElementById('toast');
+
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+    submitBtn.style.opacity = '0.7';
+
+    try {
+      const formData = new FormData(form);
+      const res = await fetch('http://localhost:3001/api/orders', {
+        method: 'POST',
+        body: formData
+      });
+      const data = await res.json();
+
+      if (!res.ok) throw new Error(data.error || 'Something went wrong');
+
+      toast.innerHTML = `<strong>Order received!</strong> We'll contact you within 24 hours. Order #${data.orderId.slice(-8)} ✦`;
+      toast.style.background = '#1E1A16';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 6000);
+      form.reset();
+      document.getElementById('fileText').innerHTML = 'Drop your photos here or click to browse<br><span style="font-size:0.65rem;opacity:0.6">JPG, PNG · Up to 20 photos</span>';
+
+    } catch (err) {
+      toast.innerHTML = `<strong>Error:</strong> ${err.message}`;
+      toast.style.background = '#8B1A1A';
+      toast.classList.add('show');
+      setTimeout(() => toast.classList.remove('show'), 5000);
+    } finally {
+      submitBtn.textContent = 'Send My Order ✦';
+      submitBtn.disabled = false;
+      submitBtn.style.opacity = '1';
+    }
+  }
+
+  // ─── Parallax hero ───
+  const hero = document.getElementById('hero');
+  const heroContent = hero.querySelector('.hero-content');
+  window.addEventListener('scroll', () => {
+    const y = window.scrollY;
+    if (y < window.innerHeight) {
+      heroContent.style.transform = `translateY(${y * 0.25}px)`;
+    }
+  });
+
+  // ─── Smooth scroll for nav links ───
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      e.preventDefault();
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) target.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+</script>
+</body>
+</html>
