@@ -1463,7 +1463,7 @@
       const formData = new FormData(form);
       const API_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
         ? 'http://localhost:3001'
-        : 'https://idora-api-production.up.railway.app';
+        : 'https://idora-mag-production.up.railway.app';
       const res = await fetch(`${API_URL}/api/orders`, {
         method: 'POST',
         body: formData
